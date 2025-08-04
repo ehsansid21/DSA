@@ -1,0 +1,29 @@
+class Solution {
+    public int kthElement(int[] a, int[] b, int k) {
+        int n1 = a.length;
+        int n2 = b.length;
+        int[] arr = new int[n1 + n2];
+
+        int i = 0, j = 0, index = 0;
+
+       
+        while (i < n1 && j < n2) {
+            if (a[i] < b[j]) {
+                arr[index++] = a[i++];
+            } else {
+                arr[index++] = b[j++];
+            }
+        }
+
+        while (i < n1) {
+            arr[index++] = a[i++];
+        }
+
+        while (j < n2) {
+            arr[index++] = b[j++];
+        }
+
+       
+        return arr[k - 1];
+    }
+}
